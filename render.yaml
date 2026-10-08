@@ -1,0 +1,26 @@
+# Persistent SQLite and attachments require a paid service with a disk.
+# Review Render's displayed price before confirming a deployment.
+services:
+  - type: web
+    name: arepas-la-mananera
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    healthCheckPath: /healthz
+    numInstances: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: AREPAS_HOST
+        value: 0.0.0.0
+      - key: AREPAS_DATA_DIR
+        value: /var/data/arepas
+      - key: AREPAS_ADMIN_NAME
+        value: Dujardy
+      - key: AREPAS_ADMIN_PASSWORD
+        sync: false
+    disk:
+      name: arepas-datos
+      mountPath: /var/data
+      sizeGB: 1

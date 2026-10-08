@@ -1,0 +1,11 @@
+data/
+__pycache__/
+*.pyc
+*.zip
+.env
+.env.*
+!.env.example
+*.sqlite3
+*.sqlite3-*
+*.pem
+*.key
